@@ -1,15 +1,26 @@
 name: QMK Build
-
 on:
   push:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: ghcr.io/qmk/qmk_cli
     steps:
-      - uses: actions/checkout@v4
-      - uses: qmk/qmk-action@v1
+      - name: Checkout source
+        uses: actions/checkout@v4
         with:
-          keyboard: 59K
-          keymap: default
+          submodules: recursive
+
+      - name: Compile firmware
+        run: qmk compile -kb 59key -km default
+
+      - name: Upload hex
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            *.hex
+            *.bin
