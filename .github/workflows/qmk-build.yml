@@ -6,7 +6,7 @@ runs-on: ubuntu-latest
 steps:
 
 - uses: actions/checkout@v4
-- uses: qmk/qmk-action@v1
+- uses: qmk/qmk-action@v2
 with:
 keyboard: 59key
 keymap: default
