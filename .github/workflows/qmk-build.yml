@@ -1,12 +1,15 @@
 name: QMK Build
-on: [push]
-jobs:
-build:
-runs-on: ubuntu-latest
-steps:
 
-- uses: actions/checkout@v4
-- uses: qmk/qmk-action@main
-with:
-keyboard: 59key
-keymap: default
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: qmk/qmk-action@v1
+        with:
+          keyboard: 59K
+          keymap: default
