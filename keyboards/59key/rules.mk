@@ -1,0 +1,4 @@
+MCU = atmega32u4
+BOARD = BLUEFRUIT
+RGBLIGHT_ENABLE = yes
+WS2812_DRIVER = bitbang
